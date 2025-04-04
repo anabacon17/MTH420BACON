@@ -1,8 +1,8 @@
 # python_intro.py
 """Python Essentials: Introduction to Python.
-<Name>
-<Class>
-<Date>
+<Ana Bacon>
+<MTH 420>
+<04/04/2025>
 """
 
 
