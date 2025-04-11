@@ -15,6 +15,14 @@ def sphere_volume(r):
     """ Return the volume of the sphere of radius 'r'.
     Use 3.14159 for pi in your computation.
     """
+    pi=3.14159
+    volume = (4/3) * pi * (r**3)
+    return volume
+
+if __name__ = "__main__":
+    radius = 5
+    volume = sphere_volume(radius)
+    print(f"The volume of the sphere with radius {radius} is: {volume}")
     raise NotImplementedError("Problem 2 Incomplete")
 
 
