@@ -7,33 +7,20 @@
 
 
 # Problem 1 (write code below)
-if __Ana Bacon__ == "__main__":
-    print("Hello, world!")     #Indent with four spaces(NOT a tab).
+
 
 # Problem 2
 def sphere_volume(r):
     """ Return the volume of the sphere of radius 'r'.
     Use 3.14159 for pi in your computation.
     """
-    pi=3.14159
-    volume = (4/3) * pi * (r**3)
-    return volume
-
-if __name__ = "__main__":
-    radius = 5
-    volume = sphere_volume(radius)
-    print(f"The volume of the sphere with radius {radius} is: {volume}")
-
-
-
-
 
 # Problem 3
 def isolate(a, b, c, d, e):
     """ Print the arguments separated by spaces, but print 5 spaces on either
     side of b.
     """
-    print(a, ' ' * 5 + b ' ' * 5, c, sep=' ')
+    print(a, b, c, sep="     ", end=" ")
     print(d, e)
 
 isolate("Hello", "World", "Python", "is", "great")
@@ -53,12 +40,12 @@ def first_half(my_string):
     """
     length=len(my_string)
     half_index = length // 2
-    if length % 2 = 0:
+    if length % 2 == 0:
         return my_string[ :half_index]
     else:
         return my_string[ :half_index]
     
-def backward(my_string)
+def backward(my_string):
     """ Return the reverse of the string 'my_string'.
 
     Examples:
@@ -69,12 +56,7 @@ def backward(my_string)
     """
     return my_string[ ::-1]
 
-if__name__ == "__main__":
-    print(first_half("python"))
-    print(first_hald("ipython"))
-    
-    print(backward("python"))
-    print(backward("ipython"))
+
     
 
 # Problem 5
@@ -111,9 +93,7 @@ print("After replacing 'eagle' with 'hawk':", my_list)
 
 return my_list
 
-if__name__ == "__main__":
-    result = list_ops()
-    pring("Final results:", result)
+
 
 
 # Problem 6
@@ -134,10 +114,7 @@ def pig_latin(word):
     else: 
         return word[1:] + first_letter + "ay"
     
-if __name__ == "__main__":
-    print(pig_latin("apple"))
-    print(pig_latin("banana"))
-    print(pig_latin("cherry"))
+
 
 
 # Problem 7
@@ -156,9 +133,7 @@ def palindrome():
     
     return largest_palindrome
 
-if__name__ == "__main__":
-    result = palindrome()
-    print("The largest palindrome number madre from the product of two 3-digit numbers is:", result)
+
 
     
 # Problem 8
@@ -169,9 +144,28 @@ def alt_harmonic(n):
     terms = [((-1) ** (i + 1)) / i for i in range(1, n+1)]
     return sum(terms)
 
-if __name__ == "__main__":
-    n = 500000
-    result = alt_harmonic(n)
-    print(f"The partial sum of the first {n} terms of the alternating harmonic series is approximately: {result:.5f}")
+
+    
+    
+if __name_ == "__main__":
+    print("Hello, world!")     #Indent with four spaces(NOT a tab).
+    
+    
+return (4/3) * 3.14159 r ** 3
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
