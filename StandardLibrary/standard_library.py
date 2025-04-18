@@ -99,15 +99,15 @@ def shut_the_box(player, timelimit):
     
     
     
-     return f"{minimum}, {maximum}, {average}"
+return f"{minimum}, {maximum}, {average}"
     
     
-    print(f"{obj_name.capitalize()} is {'mutabel' if mutable else 'immutable'}.")
+print(f"{obj_name.capitalize()} is {'mutabel' if mutable else 'immutable'}.")
     
     
-    return sqrt(sum([product(a, a), product(b,b)]))
+return sqrt(sum([product(a, a), product(b,b)]))
 
 
-     return power_set_list
+return power_set_list
 
     

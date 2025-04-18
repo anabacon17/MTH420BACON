@@ -14,6 +14,7 @@ def sphere_volume(r):
     """ Return the volume of the sphere of radius 'r'.
     Use 3.14159 for pi in your computation.
     """
+    return (4/3) * 3.14159 * r**3
 
 # Problem 3
 def isolate(a, b, c, d, e):
@@ -22,8 +23,7 @@ def isolate(a, b, c, d, e):
     """
     print(a, b, c, sep="     ", end=" ")
     print(d, e)
-
-isolate("Hello", "World", "Python", "is", "great")
+    
 
 
 
@@ -38,12 +38,8 @@ def first_half(my_string):
         >>> first_half("ipython")
         'ipy'
     """
-    length=len(my_string)
-    half_index = length // 2
-    if length % 2 == 0:
-        return my_string[ :half_index]
-    else:
-        return my_string[ :half_index]
+    half_index=len(my_string) // 2
+    return my_string[:half_index]
     
 def backward(my_string):
     """ Return the reverse of the string 'my_string'.
@@ -54,7 +50,7 @@ def backward(my_string):
         >>> backward("ipython")
         'nohtypi'
     """
-    return my_string[ ::-1]
+    return my_string[::-1]
 
 
     
@@ -75,23 +71,23 @@ def list_ops():
         >>> list_ops()
         ['fox', 'hawk', 'dog', 'bearhunter']
     """
-my_list = ["bear", "ant", "cat", "dog"]
-print("Initial list:", my_list)
+    my_list = ["bear", "ant", "cat", "dog"]
 
-my_list.append("eagle")
-print("After appending 'eagle':", my_list)
+    my_list.append("eagle")
 
-my_list[2] = "fox"
-print("After replacinf index 2 with 'fox':", my_list)
+    my_list[2] = "fox"
+    
+    my_list.pop(1)
 
-my_list.sort(reverse=True)
-print("After sorting in reverse alphabetical order:", my_list)
+    my_list.sort(reverse=True)
+    
+    bird_index = my_list.index("eagle")
+    
+    my_list[bird_index] = "hawk"
+    
+    my_list[-1] += "hunter"
 
-eagle_index = my_list.index("eagle")
-my_list[eagle_index] = "hawk"
-print("After replacing 'eagle' with 'hawk':", my_list)
-
-return my_list
+    return my_list
 
 
 
@@ -106,13 +102,12 @@ def pig_latin(word):
         >>> pig_latin("banana")
         'ananabay'
     """
-    vowels = "aeiou"
-    first_letter = word[0].lower()
+    vowels = {'a', 'e', 'i', 'o', 'u'}
     
-    if first_letter in vowels:
+    if word[0] in vowels:
         return word + "hay"
     else: 
-        return word[1:] + first_letter + "ay"
+        return word[1:] + word[0] + "ay"
     
 
 
@@ -123,17 +118,13 @@ def palindrome():
     of two 3-digit numbers.
     """
     largest_palindrome = 0
-    
     for i in range(100, 1000):
-        for j in range (i, 1000):
+        for j in range(100, 1000):
             product = i * j
             if str(product) == str(product)[::-1]:
                 if product > largest_palindrome:
-                    largest_palidrome = product
-    
+                    largest_palindrome = product
     return largest_palindrome
-
-
 
     
 # Problem 8
@@ -147,21 +138,29 @@ def alt_harmonic(n):
 
     
     
-if __name_ == "__main__":
+if __name__ == "__main__":
     print("Hello, world!")     #Indent with four spaces(NOT a tab).
     
     
-return (4/3) * 3.14159 r ** 3
+    r=3
+    print(sphere_volume(r))
+    
+    isolate('a', 'b', 'c', 'd', 'e')
+    
+    my_string="Python"
+    print(first_half(my_string))
+    print(backward(my_string))
+    
+    print(list_ops())
+    
+    print(pig_latin("apple"))
+    print(pig_latin("banana"))
 
+    print(palindrome())
     
     
     
-    
-    
-    
-    
-    
-    
+    print(alt_harmonic(500000))
     
     
     
