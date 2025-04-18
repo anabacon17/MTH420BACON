@@ -6,6 +6,8 @@
 """
 
 from math import sqrt
+import calculator
+from itertools import combinations
 
 
 # Problem 1
@@ -17,40 +19,68 @@ def prob1(L):
     maximum = max(L)
     average = sum(L) / len(L)
     
-    return f"{minimum}, {maximum}, {average}"
+    return minimum, maximum, average
     
-    raise NotImplementedError("Problem 1 Incomplete")
-
 
 # Problem 2
 def prob2():
     """Determine which Python objects are mutable and which are immutable.
     Test integers, strings, lists, tuples, and sets. Print your results.
     """
-    test_objects = {
-        "integer": 42,
-        "string": "hello",
-        "list": [1, 2, 3],
-        "tuple": (1, 2, 3),
-        "set": {1, 2, 3}
-    }
-    
-    for obj_name, obj in test_objects.items():
-        try:
-            obj[0]
-            mutable = False
-        except TypeError:
-            mutable = True
-            
-        print(f"{obj_name.capitalize()} is {'mutabel' if mutable else 'immutable'}.")
+    int_1=4
+    int_2 = int_1
+    int_2 +=1
+    is_equal = int_1 == int_2
+    print(is_equal)
+    if is_equal:
+        print("mutable")
+    else:
+        print("immutable")
         
+    str_1="hello"
+    str_2=str_1
+    str_2 += "world"
+    is_equal = str_1 == str_2
+    print(is_equal)
+    if is_equal:
+        print("mutable")
+    else:
+        print("immutable")
     
-    raise NotImplementedError("Problem 2 Incomplete")
+    
+    list_1 = [1,2,3]
+    list_2 = list_1
+    list_2.append(4)
+    is_equal = list_1==list_2
+    print(is_equal)
+    if is_equal:
+        print("mutable")
+    else:
+        print("immutable")
+        
+    tuple_1=(1,2,3)
+    tuple_2=tuple_1
+    tuple_2+=(4,)
+    is_equal=tuple_1==tuple_2
+    print(is_equal)
+    if is_equal:
+        print("mutable")
+    else:
+        print("immutable")
+        
+    set_1={1,2,3}
+    set_2=set_1
+    set_2.add(4)
+    is_equal = set_1==set_2
+    print(is_equal)
+    if is_equal:
+        print("mutable")
+    else:
+        print("immutable")
+    
 
 
 # Problem 3
-
-from calculator import sum, product, sqrt
 
 def hypot(a, b):
     """Calculate and return the length of the hypotenuse of a right triangle.
@@ -63,14 +93,12 @@ def hypot(a, b):
     Returns:
         The length of the triangle's hypotenuse.
     """
-    return sqrt(sum([product(a, a), product(b,b)]))
+    return calculator.sqrt(calculator.sum(calculator.product(a, a), calculator.product(b,b)))
     
-    raise NotImplementedError("Problem 3 Incomplete")
+    
 
 
 # Problem 4
-import itertools
-
 def power_set(A):
     """Use itertools to compute the power set of A.
 
@@ -80,13 +108,13 @@ def power_set(A):
     Returns:
         (list(sets)): The power set of A as a list of sets.
     """
+    A=list(A)
     power_set_list = []
     for i in range(len(A) + 1):
-        subsets = itertools.combinations(A, i)
-        power_set_list.extend(set(subset) for subset in subsets)
+        for subsets in combinations(A,i):
+            power_set_list.append(set(subsets))
     return power_set_list
     
-    raise NotImplementedError("Problem 4 Incomplete")
 
 
 # Problem 5: Implement shut the box.
@@ -99,15 +127,15 @@ def shut_the_box(player, timelimit):
     
     
     
-return f"{minimum}, {maximum}, {average}"
+if __name__=="__main__":
+    L=[2,4,6,8,10]
+    print(prob1(L))
     
+    prob2()
     
-print(f"{obj_name.capitalize()} is {'mutabel' if mutable else 'immutable'}.")
+    a=6
+    b=8
+    print(hypot(a,b))
     
-    
-return sqrt(sum([product(a, a), product(b,b)]))
-
-
-return power_set_list
-
-    
+    A=['a','b','c']
+    print(power_set(A))
