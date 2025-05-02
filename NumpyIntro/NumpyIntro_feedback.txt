@@ -1,0 +1,40 @@
+05/02/25 19:55
+
+Problem 1 (5 points):
+AttributeError: 'NoneType' object has no attribute 'shape'
+
+Problem 2 (5 points):
+Score += 5
+
+Problem 3 (5 points):
+prob3() failed
+Score += 1
+
+Problem 4 (5 points):
+TypeError: prob4() takes 0 positional arguments but 1 was given
+
+Problem 5 (5 points):
+ValueError: all the input array dimensions except for the concatenation axis must match exactly, but along dimension 0, the array at index 0 has size 2 and the array at index 1 has size 3
+
+Problem 6 (10 points):
+AttributeError: 'NoneType' object has no attribute 'shape'
+
+Problem 7 (10 points):
+NotImplementedError: Problem 7 Incomplete
+
+Code Quality (5 points):
+Score += 5
+
+Total score: 11/50 = 22.0%
+
+Linter Notes: 
+/home/gibsonn/Instructor-Materials/AnaBacon/NumpyIntro/numpy_intro.py:16:28: E231 missing whitespace after ','
+/home/gibsonn/Instructor-Materials/AnaBacon/NumpyIntro/numpy_intro.py:42:26: E225 missing whitespace around operator
+/home/gibsonn/Instructor-Materials/AnaBacon/NumpyIntro/numpy_intro.py:45:26: E225 missing whitespace around operator
+/home/gibsonn/Instructor-Materials/AnaBacon/NumpyIntro/numpy_intro.py:46:30: E225 missing whitespace around operator
+/home/gibsonn/Instructor-Materials/AnaBacon/NumpyIntro/numpy_intro.py:96:26: E225 missing whitespace around operator
+/home/gibsonn/Instructor-Materials/AnaBacon/NumpyIntro/numpy_intro.py:97:29: E225 missing whitespace around operator
+
+
+-------------------------------------------------------------------------------
+
