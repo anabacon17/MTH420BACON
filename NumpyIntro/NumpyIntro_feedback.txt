@@ -38,3 +38,30 @@ Linter Notes:
 
 -------------------------------------------------------------------------------
 
+05/09/25 20:34
+
+Problem 1 (5 points):
+AttributeError: 'NoneType' object has no attribute 'shape'
+
+Problem 2 (5 points):
+Score += 5
+
+Problem 3 (10 points):
+prob3() failed
+Score += 2
+
+Problem 4 (10 points):
+TypeError: prob4() takes 0 positional arguments but 1 was given
+
+Problem 5 (10 points):
+ValueError: all the input array dimensions except for the concatenation axis must match exactly, but along dimension 0, the array at index 0 has size 2 and the array at index 1 has size 3
+
+Problem 6 (10 points):
+AttributeError: 'NoneType' object has no attribute 'shape'
+
+Total score: 7/50 = 14.0%
+
+Linter Notes: None
+
+-------------------------------------------------------------------------------
+
