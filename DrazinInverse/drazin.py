@@ -1,12 +1,13 @@
 # drazin.py
 """Volume 1: The Drazin Inverse.
-<Name>
-<Class>
-<Date>
+Ana Bacon
+MTH 420
+Jun 3
 """
 
 import numpy as np
 from scipy import linalg as la
+from scipy.linalg import schur, inv
 
 
 # Helper function for problems 1 and 2.
@@ -50,7 +51,11 @@ def is_drazin(A, Ad, k):
     Returns:
         (bool) True of Ad is the Drazin inverse of A, False otherwise.
     """
-    raise NotImplementedError("Problem 1 Incomplete")
+    cond1 = np.allclose(np.linalg.matrix_power(A, k+1) @ Ad, np.linalg.matrix_power(A,k))
+    cond2 = np.allclose(Ad @ A @ Ad, Ad)
+    cond3 = np.allclose(A @ Ad, Ad @ A)
+    return cond1 and cond2 and cond3
+    
 
 
 # Problem 2
@@ -63,10 +68,43 @@ def drazin_inverse(A, tol=1e-4):
     Returns:
        ((n,n) ndarray) The Drazin inverse of A.
     """
-    raise NotImplementedError("Problem 2 Incomplete")
+    n = A.shape[0]
+    T, Q = schur(A)
+    U = np.zeros((n, n))
+    U[:, :] = Q[:, :]
+    
+    eigenvals = np.diag(T)
+    k = 0
+    for i in range(n):
+        if abs (eigenvals[i]) > tol:
+            k +=1
+            
+    T, Q, _ = schur(A, sort=lambda x: abs(x) > tol)
+    U = Q
+    
+    S = np.zeros_like(T)
+    for i in range(k):
+        S[i, i] = 1 / T[i, i] 
+        
+    AD = U @ S @ inv(U)
+    return AD
+
+    A = np.array([
+    [1, 3, 0, 0],
+    [0, 1, 3, 0],
+    [0, 0, 1, 3],
+    [0, 0, 0, 0]], dtype=float)
+
+    AD = drazin_inverse(A)
+    print(is_drazin(A, AD, 1)) 
+
 
 
 # Problem 3
+def laplacian(A):
+    D = np.diag(A.sum(axis=1))
+    return D-A
+
 def effective_resistance(A):
     """Compute the effective resistance for each node in a graph.
 
@@ -77,51 +115,59 @@ def effective_resistance(A):
         ((n,n) ndarray) The matrix where the ijth entry is the effective
         resistance from node i to node j.
     """
-    raise NotImplementedError("Problem 3 Incomplete")
+    n = A.shape[0]
+    L = laplacian(A)
+    LD = drazin_inverse(L)
+    
+    R = np.zeros((n, n))
+    for i in range(n):
+        for j in range(n):
+            R[i,j] = LD[i , i] + LD[j, j] - 2 * LD[i, j]
+    return R
 
+    A = np.array([
+    [0, 1, 1],
+    [1, 0, 1],
+    [1, 1, 0]], dtype=float)
 
-# Problems 4 and 5
-class LinkPredictor:
-    """Predict links between nodes of a network."""
+    R = effective_resistance(A)
+    print(np.round(R, 4))
 
-    def __init__(self, filename='social_network.csv'):
-        """Create the effective resistance matrix by constructing
-        an adjacency matrix.
+                                  
+                                  
+if __name__ == "__main__":
+    # Problem 1: Test is_drazin
+    A1 = np.array([
+        [1, 3, 0, 0],
+        [0, 1, 3, 0],
+        [0, 0, 1, 3],
+        [0, 0, 0, 0]
+    ], dtype=float)
 
-        Parameters:
-            filename (str): The name of a file containing graph data.
-        """
-        raise NotImplementedError("Problem 4 Incomplete")
+    AD1 = np.array([
+        [1, -3, 9, 81],
+        [0, 1, -3, -18],
+        [0, 0, 1, 3],
+        [0, 0, 0, 0]
+    ], dtype=float)
 
+    print("Problem 1:")
+    print("A1 Drazin Check:", is_drazin(A1, AD1, 1))
 
-    def predict_link(self, node=None):
-        """Predict the next link, either for the whole graph or for a
-        particular node.
+    # Problem 2: Compute Drazin inverse and verify with Problem 1
+    A2 = A1.copy()
+    AD2 = drazin_inverse(A2)
+    print("Problem 2:")
+    print("A2 Drazin Check (should be True):", is_drazin(A2, AD2, 1))
 
-        Parameters:
-            node (str): The name of a node in the network.
+    # Problem 3: Compute effective resistance for triangle graph
+    A3 = np.array([
+        [0, 1, 1],
+        [1, 0, 1],
+        [1, 1, 0]
+    ], dtype=float)
 
-        Returns:
-            node1, node2 (str): The names of the next nodes to be linked.
-                Returned if node is None.
-            node1 (str): The name of the next node to be linked to 'node'.
-                Returned if node is not None.
-
-        Raises:
-            ValueError: If node is not in the graph.
-        """
-        raise NotImplementedError("Problem 5 Incomplete"
-
-
-    def add_link(self, node1, node2):
-        """Add a link to the graph between node 1 and node 2 by updating the
-        adjacency matrix and the effective resistance matrix.
-
-        Parameters:
-            node1 (str): The name of a node in the network.
-            node2 (str): The name of a node in the network.
-
-        Raises:
-            ValueError: If either node1 or node2 is not in the graph.
-        """
-        raise NotImplementedError("Problem 5 Incomplete")
+    print("Problem 3:")
+    R = effective_resistance(A3)
+    print("Effective Resistance Matrix:\n", np.round(R, 4))
+                                  
